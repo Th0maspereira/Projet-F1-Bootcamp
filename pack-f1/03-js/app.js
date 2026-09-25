@@ -24,7 +24,35 @@ function trierParPoints(liste) {
 //      rang (1, 2, 3...) | nom | écurie (chaîne vide si absente) | points | victoires
 //    Chaque <tr> porte l'attribut data-nom. Un nouvel appel REMPLACE le contenu.
 function remplirTableau(idCorps, liste) {
+  const corps = document.getElementById(idCorps);
+  corps.innerHTML = ''; // Vider le contenu existant
 
+  liste.forEach((item, index) => {
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-nom', item.nom);
+
+    const tdRang = document.createElement('td');
+    tdRang.textContent = index + 1;
+    tr.appendChild(tdRang);
+
+    const tdNom = document.createElement('td');
+    tdNom.textContent = item.nom;
+    tr.appendChild(tdNom);
+
+    const tdEcurie = document.createElement('td');
+    tdEcurie.textContent = item.ecurie || '';
+    tr.appendChild(tdEcurie);
+
+    const tdPoints = document.createElement('td');
+    tdPoints.textContent = item.points;
+    tr.appendChild(tdPoints);
+
+    const tdVictoires = document.createElement('td');
+    tdVictoires.textContent = item.victoires;
+    tr.appendChild(tdVictoires);
+
+    corps.appendChild(tr);
+  });
 }
 
 // 3. marquerPodium(idCorps) : ajoute la classe CSS "podium" aux TROIS PREMIÈRES
