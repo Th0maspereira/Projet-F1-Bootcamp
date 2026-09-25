@@ -74,7 +74,40 @@ public class Classement {
     // 3. classementEcuries(pilotes) : additionne les points, victoires et
     //    2e places des pilotes de chaque écurie. Même ordre de tri.
     public static List<Resultat> classementEcuries(List<Resultat> pilotes) {
-        // À COMPLÉTER
+        public static List<Resultat> classementEcuries(List<Resultat> pilotes) {
+        Map<String, Resultat> map = new HashMap<>();
+
+        for (Resultat p : pilotes) {
+            String ecurie = p.ecurie;
+            Resultat res = map.get(ecurie);
+            if (res == null) {
+                res = new Resultat(ecurie, "");
+                map.put(ecurie, res);
+            }
+
+            res.points += p.points;
+            res.victoires += p.victoires;
+            res.deuxiemes += p.deuxiemes;
+        }
+
+        List<Resultat> resultats = new ArrayList<>(map.values());
+
+        // Même ordre de tri
+        resultats.sort((r1, r2) -> {
+            if (r2.points != r1.points) {
+                return Integer.compare(r2.points, r1.points);
+            }
+            if (r2.victoires != r1.victoires) {
+                return Integer.compare(r2.victoires, r1.victoires);
+            }
+            if (r2.deuxiemes != r1.deuxiemes) {
+                return Integer.compare(r2.deuxiemes, r1.deuxiemes);
+            }
+            return r1.nom.compareTo(r2.nom);
+        });
+
+        return resultats;
+    }
         return null;
     }
 
