@@ -54,7 +54,6 @@ public class Classement {
 
         List<Resultat> resultats = new ArrayList<>(map.values());
         
-        // Tri multi-critères : points desc, victoires desc, 2e places desc, nom A->Z
         resultats.sort((r1, r2) -> {
             if (r2.points != r1.points) {
                 return Integer.compare(r2.points, r1.points);
@@ -92,7 +91,6 @@ public class Classement {
 
         List<Resultat> resultats = new ArrayList<>(map.values());
 
-        // Même ordre de tri
         resultats.sort((r1, r2) -> {
             if (r2.points != r1.points) {
                 return Integer.compare(r2.points, r1.points);

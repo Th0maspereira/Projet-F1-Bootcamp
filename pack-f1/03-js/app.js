@@ -25,7 +25,7 @@ function trierParPoints(liste) {
 //    Chaque <tr> porte l'attribut data-nom. Un nouvel appel REMPLACE le contenu.
 function remplirTableau(idCorps, liste) {
   const corps = document.getElementById(idCorps);
-  corps.innerHTML = ''; // Vider le contenu existant
+  corps.innerHTML = '';
 
   liste.forEach((item, index) => {
     const tr = document.createElement('tr');
